@@ -8,7 +8,7 @@ You'll find that a 'client.js' file already exists and is linked to the HTML fil
 You can test these by running the following commands in the console:
 
 - ```garage``` (will show an empty array at first)
-- ```newCar( 1991, 'Plyouth', 'Horizon' )```
+- ```newCar( 1991, 'Plymouth', 'Horizon' )```
 - ```garage``` (should now show an array with the one car input above within)
 
 ## Assignment

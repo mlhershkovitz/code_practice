@@ -3,8 +3,7 @@ $(document).ready(readyNow);
 function readyNow() {
   console.log('JS Working');
   $('#addCarButton').on('click', addCar);
-  appendList();
-  
+
 }
 
 class Car{
@@ -29,8 +28,5 @@ function addCar() {
   let makeIn = $('#makeIn').val();
   let modelIn = $ ('#modelIn').val();
   newCar (yearIn, makeIn, modelIn);
-}
-
-function appendList() {
-  console.log('hitting the append function');
+  $('#carList').append(`<li>${yearIn}, ${makeIn}, ${modelIn}</li>`)
 }

@@ -1,6 +1,7 @@
 $(document).ready(readyNow);
 // counter number
 let counter = 0;
+counter++;
 
 function readyNow(){
     incrementOnClick();
@@ -8,6 +9,7 @@ function readyNow(){
 
 function incrementOnClick(){
   // YOUR CODE HERE
+  console.log('clicked', counter);
   let header = $('<h1>Challenge 110</h1>');
   $('.container').append(header);
 
