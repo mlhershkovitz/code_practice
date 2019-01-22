@@ -35,7 +35,17 @@ todoRouter.get('/', (req, res) => {
 }); // end GET
 
 //POST request for new task info
-
+todoRouter.post('/', (req, res) => {
+    console.log('in server POST request');
+    let tasks = req.body;
+    let queryString = `INSERT INTO "tasks" ("category", "task", "notes", "complete")
+                        VALUES($1, $2, $3, $4, $5)`;
+    pool.query(queryString, [tasks.category, tasks.task, tasks.notes, tasks.notes, tasks.complete]).then(()=>{
+        res.sendStatus(201);
+    }).catch((err) => {
+        res.sendStatus(500);
+    });//end error
+});// end post request
 
 //DELETE
 
