@@ -1,17 +1,18 @@
-//requires
+//requires/constants
 const express = require('express');
-const bodyParser = require('body-parser');
-
-//globals
 const app = express();
-// need new port
+const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 5000;
+const todoRouter = require('./routes/todo.router');
 
-
-//uses
+//connect apps being used
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-//start server
+//routes
+app.use('/todo', todoRouter);
+
+//start listening for requests on a specific port
 app.listen( PORT, function(){
-    console.log('server is up on PORT'); 
-});
+    console.log('listening on PORT', PORT); 
+});//end listener
