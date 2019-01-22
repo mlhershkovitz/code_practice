@@ -13,6 +13,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/todo', todoRouter);
 
 //start listening for requests on a specific port
-app.listen( PORT, function(){
+app.listen( PORT, () => {
     console.log('listening on PORT', PORT); 
 });//end listener

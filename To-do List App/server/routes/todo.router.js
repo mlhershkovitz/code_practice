@@ -1,6 +1,6 @@
 //requires/constants
 const express = require('express');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const todoRouter = express.Router();
 const pg = require('pg');
 
@@ -25,7 +25,7 @@ pool.on('error', (error) => {
 //GET request for all task info
 todoRouter.get('/', (req, res) => {
     console.log('in GET request');
-    let queryString = `SELECT * FROM "tasks" ORDER BY "id" ASC;`;
+    let queryString = `SELECT * FROM "tasks" ORDER BY id;`;
     pool.query(queryString)
     .then((result) => {
         res.send(result.rows);
@@ -40,3 +40,7 @@ todoRouter.get('/', (req, res) => {
 //DELETE
 
 //PUT
+
+
+//exports
+module.exports = todoRouter;

@@ -22,3 +22,9 @@ function getTasks() {
     });// end ajax GET
 }; // end getTasks
 
+
+//ajax PUT - to add a task to the server as well
+function addTask() {
+    console.log('in addTask');
+}; // end addTask
+
