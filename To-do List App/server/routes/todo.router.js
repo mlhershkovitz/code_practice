@@ -1,6 +1,6 @@
 //requires/constants
 const express = require('express');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const todoRouter = express.Router();
 const pg = require('pg');
 

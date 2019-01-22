@@ -8,6 +8,7 @@ const todoRouter = require('./routes/todo.router');
 //connect apps being used
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 //routes
 app.use('/todo', todoRouter);

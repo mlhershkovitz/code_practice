@@ -3,7 +3,7 @@ $(document).ready(readyNow);
 function readyNow() {
     console.log('Client is working');
     //activate add button
-    $('#newTaskButton').on('click', addTask);
+    $('#addTaskButton').on('click', addTask);
 
     //call the GET request function
     getTasks();
@@ -55,7 +55,7 @@ function addTask() {
         //call appending function
         getTasks();
     }).catch(function (err) {
-        console.log('error in POST', response);
+        console.log('error in POST', err);
     }); // end ajax POST
 }; // end addTask
 
