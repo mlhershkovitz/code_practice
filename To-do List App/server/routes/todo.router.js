@@ -23,7 +23,16 @@ pool.on('error', (error) => {
 }); //end error
 
 //GET request for all task info
-
+todoRouter.get('/', (req, res) => {
+    console.log('in GET request');
+    let queryString = `SELECT * FROM "tasks" ORDER BY "id" ASC;`;
+    pool.query(queryString)
+    .then((result) => {
+        res.send(result.rows);
+    }).catch((err) => {
+        res.sendStatus(500);
+    });//end error check
+}); // end GET
 
 //POST request for new task info
 
