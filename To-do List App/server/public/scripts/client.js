@@ -6,7 +6,7 @@ function readyNow() {
     $('#newTaskButton').on('click', addTask);
 
     //call the GET request function
-
+    getTasks();
     // call function that empties inputs
 }; // end readyNow
 
@@ -18,7 +18,19 @@ function getTasks() {
         url: '/todo'
     }).then(function (response) {
         console.log('GET request response', response);
-        //call function to append tasks to the dom        
+        //append tasks to dom
+        //make sure to empty first so no repeats
+        $('tbody').empty();
+        for (let todos of response) {
+            let newRow = $(`
+            <tr class= "seeTask">
+                <td>${todos.category}</td>
+                <td>${todos.task}</td>
+                <td>${todos.notes}</td>
+                <td>${todos.complete}</td> </tr>`);
+                newRow.data('id', todos.id);
+                $('tbody').append(newRow);
+        }; //end appending loop
     }); // end ajax GET
 }; // end getTasks
 
@@ -41,6 +53,7 @@ function addTask() {
         //call function to empty inputs
         emptyInputs();
         //call appending function
+        getTasks();
     }).catch(function (err) {
         console.log('error in POST', response);
     }); // end ajax POST

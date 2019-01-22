@@ -1,6 +1,6 @@
 //requires/constants
 const express = require('express');
-//const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const todoRouter = express.Router();
 const pg = require('pg');
 
@@ -39,8 +39,8 @@ todoRouter.post('/', (req, res) => {
     console.log('in server POST request');
     let tasks = req.body;
     let queryString = `INSERT INTO "tasks" ("category", "task", "notes", "complete")
-                        VALUES($1, $2, $3, $4, $5)`;
-    pool.query(queryString, [tasks.category, tasks.task, tasks.notes, tasks.notes, tasks.complete]).then(()=>{
+                        VALUES($1, $2, $3, $4)`;
+    pool.query(queryString, [tasks.category, tasks.task, tasks.notes, tasks.complete]).then(()=>{
         res.sendStatus(201);
     }).catch((err) => {
         res.sendStatus(500);
