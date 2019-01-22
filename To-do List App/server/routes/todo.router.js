@@ -47,7 +47,20 @@ todoRouter.post('/', (req, res) => {
     });//end error
 });// end post request
 
-//DELETE
+//DELETE requests/button
+todoRouter.delete('/:id', (req, res) => {
+    console.log('in server delete request');
+    //declare variable for ids
+    let taskDelete = req.params.id;
+    console.log('connecting to ids', taskDelete);
+    let queryString= `DELETE FROM "tasks" WHERE "id" = $1;`;
+    pool.query(queryString, [taskDelete]).then(() => {
+        res.sendStatus(201);
+    }).catch((err) => {
+        res.sendStatus(500);
+    }); //end error
+}); // end delete request
+
 
 //PUT
 

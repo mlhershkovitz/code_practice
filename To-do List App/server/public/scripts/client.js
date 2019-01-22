@@ -67,4 +67,17 @@ function emptyInputs() {
         $(`#completeIn`).val('')
 }; //end empty inputs
 
-// function to append all tasks to dom
+//ajax DELETE request
+function deleteTask() {
+    let taskId = $(this).data('id'); //end id variable
+    console.log('return task id', taskId);
+    $.ajax({
+        method: 'DELETE',
+        url: `/todo/${taskId}`
+    }).then(function(response) {
+        getTasks();
+        console.log('in DELETE back from server', response);
+    }).catch(function(err) {
+        console.log('error getting delete back', err);
+    }); //end delete error
+}//end ajax DELETE
